@@ -1,15 +1,13 @@
-name: 'Moja Akcja'
-description: 'Wita uzytkownika i potwierdza zaliczenie'
+name: 'Prosta Akcja'
+description: 'Wita uzytkownika'
 inputs:
-  who-to-greet:  # Parametr wejściowy
-    description: 'Kogo przywitac'
-    required: true
-    default: 'Studenta'
+  who-to-greet:
+    description: 'Imie'
+    required: false
+    default: 'Student'
 runs:
   using: "composite"
   steps:
     - name: Powitanie
       shell: bash
-      run: |
-        echo "🎉 Uruchamiam wlasna akcje!"
-        echo "Hello ${{ inputs.who-to-greet }}. Wszystko gotowe na ocene 5.0."
+      run: echo "Hello ${{ inputs.who-to-greet }}. Zaliczenie 5.0!"
