@@ -19,3 +19,11 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Lint (Main)
         run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --exit-zero
+publish-image:
+    needs: test-code 
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      image_name: strangeyears0/my-devops-app
+    secrets:
+      docker_username: ${{ secrets.DOCKER_USERNAME }}
+      docker_password: ${{ secrets.DOCKER_PASSWORD }}
